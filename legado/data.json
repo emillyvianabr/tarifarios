@@ -1,0 +1,3519 @@
+{
+  "meta": {
+    "source": "Historico_Tarifario_Caracol_Concorrencia(2).xlsx",
+    "start_period": "2023-12",
+    "end_period": "2026-10",
+    "missing_policy": "Meses/valores sem informação são exibidos como 0.",
+    "percent_policy": "Variação percentual não é calculada quando o mês anterior é 0.",
+    "season_policy": "Grade de baixa/alta temporada vem das planilhas mensais (Jul/26 em diante). Atrações sem sazonalidade informada ('season_fixed') tratam qualquer variação como ajuste real."
+  },
+  "attractions": [
+    "Acquamotion",
+    "Alpen Park",
+    "Bondinhos Aéreos",
+    "Exceed Park",
+    "Florybal",
+    "Le Jardin",
+    "Mini Mundo",
+    "Mundo a Vapor",
+    "NBA Park",
+    "Olivas de Gramado",
+    "Parque do Caracol",
+    "Pé da Cascata",
+    "Roda Canela",
+    "Skyglass",
+    "Snowland",
+    "SpaceAdventure (NASA)"
+  ],
+  "periods": [
+    "2023-12",
+    "2024-01",
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "data": [
+    {
+      "period": "2023-12",
+      "label": "Dez/23",
+      "year": 2023,
+      "month_num": 12,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 90.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 169.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 150.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 319.0,
+        "Meia": 159.9,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-01",
+      "label": "Jan/24",
+      "year": 2024,
+      "month_num": 1,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-02",
+      "label": "Fev/24",
+      "year": 2024,
+      "month_num": 2,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 90.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 169.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 150.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 299.0,
+        "Meia": 159.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-03",
+      "label": "Mar/24",
+      "year": 2024,
+      "month_num": 3,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 90.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 169.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 150.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 299.0,
+        "Meia": 159.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-04",
+      "label": "Abr/24",
+      "year": 2024,
+      "month_num": 4,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-05",
+      "label": "Mai/24",
+      "year": 2024,
+      "month_num": 5,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-06",
+      "label": "Jun/24",
+      "year": 2024,
+      "month_num": 6,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-07",
+      "label": "Jul/24",
+      "year": 2024,
+      "month_num": 7,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 90.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 99.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 65.0,
+        "Meia": 40.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 150.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 299.0,
+        "Meia": 159.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-08",
+      "label": "Ago/24",
+      "year": 2024,
+      "month_num": 8,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-09",
+      "label": "Set/24",
+      "year": 2024,
+      "month_num": 9,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-10",
+      "label": "Out/24",
+      "year": 2024,
+      "month_num": 10,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-11",
+      "label": "Nov/24",
+      "year": 2024,
+      "month_num": 11,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2024-12",
+      "label": "Dez/24",
+      "year": 2024,
+      "month_num": 12,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-01",
+      "label": "Jan/25",
+      "year": 2025,
+      "month_num": 1,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-02",
+      "label": "Fev/25",
+      "year": 2025,
+      "month_num": 2,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 90.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 129.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 65.0,
+        "Meia": 40.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 145.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 209.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-03",
+      "label": "Mar/25",
+      "year": 2025,
+      "month_num": 3,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-04",
+      "label": "Abr/25",
+      "year": 2025,
+      "month_num": 4,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 128.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 100.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 99.99,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 30.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 88.0,
+        "Meia": 58.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 99.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 101.4,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 65.0,
+        "Meia": 40.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 170.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 259.0,
+        "Meia": 164.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-05",
+      "label": "Mai/25",
+      "year": 2025,
+      "month_num": 5,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-06",
+      "label": "Jun/25",
+      "year": 2025,
+      "month_num": 6,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 128.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 100.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 99.99,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 30.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 88.0,
+        "Meia": 58.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 99.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 101.4,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 65.0,
+        "Meia": 40.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 170.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 259.0,
+        "Meia": 164.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-07",
+      "label": "Jul/25",
+      "year": 2025,
+      "month_num": 7,
+      "Acquamotion": {
+        "Adulto": 159.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 219.99,
+        "Meia": 140.0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 30.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 58.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 179.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 118.3,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 40.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 170.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 279.9,
+        "Meia": 164.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 99.0,
+        "Meia": 59.0,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2025-08",
+      "label": "Ago/25",
+      "year": 2025,
+      "month_num": 8,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 99.99,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 150.0,
+        "Meia": 75.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 30.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 88.0,
+        "Meia": 58.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 97.3,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 40.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 145.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.9,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 99.0,
+        "Meia": 59.0,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2025-09",
+      "label": "Set/25",
+      "year": 2025,
+      "month_num": 9,
+      "Acquamotion": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Alpen Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Le Jardin": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mini Mundo": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Snowland": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      }
+    },
+    {
+      "period": "2025-10",
+      "label": "Out/25",
+      "year": 2025,
+      "month_num": 10,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 99.99,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 180.0,
+        "Meia": 90.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 30.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 88.0,
+        "Meia": 58.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 97.3,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 50.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 145.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 99.0,
+        "Meia": 59.0,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2025-11",
+      "label": "Nov/25",
+      "year": 2025,
+      "month_num": 11,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 219.99,
+        "Meia": 140.0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 180.0,
+        "Meia": 90.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 108.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 97.3,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 288.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 50.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 145.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 59.9,
+        "Meia": 59.0,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2025-12",
+      "label": "Dez/25",
+      "year": 2025,
+      "month_num": 12,
+      "Acquamotion": {
+        "Adulto": 189.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 219.99,
+        "Meia": 140.0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 180.0,
+        "Meia": 90.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 108.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 179.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 83.3,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 248.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 50.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 299.9,
+        "Meia": 164.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 99.9,
+        "Meia": 59.0,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-01",
+      "label": "Jan/26",
+      "year": 2026,
+      "month_num": 1,
+      "Acquamotion": {
+        "Adulto": 179.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.0,
+        "Meia": 140.0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 50.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 145.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 299.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 59.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-02",
+      "label": "Fev/26",
+      "year": 2026,
+      "month_num": 2,
+      "Acquamotion": {
+        "Adulto": 179.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 180.0,
+        "Meia": 90.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 68.9,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 99.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 95.0,
+        "Meia": 47.5,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 148.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 50.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 145.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 59.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-03",
+      "label": "Mar/26",
+      "year": 2026,
+      "month_num": 3,
+      "Acquamotion": {
+        "Adulto": 99.5,
+        "Meia": 52.25,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 138.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 180.0,
+        "Meia": 90.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 68.9,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 99.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 114.9,
+        "Meia": 57.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 111.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 80.0,
+        "Meia": 50.0,
+        "has_record": true
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 129.5,
+        "Meia": 64.75,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 59.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-04",
+      "label": "Abr/26",
+      "year": 2026,
+      "month_num": 4,
+      "Acquamotion": {
+        "Adulto": 164.9,
+        "Meia": 119.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 180.0,
+        "Meia": 90.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 179.0,
+        "Meia": 99.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 119.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 114.9,
+        "Meia": 57.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 148.5,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 219.9,
+        "Meia": 144.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-05",
+      "label": "Mai/26",
+      "year": 2026,
+      "month_num": 5,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 179.0,
+        "Meia": 99.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 99.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 114.9,
+        "Meia": 57.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 219.9,
+        "Meia": 144.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-06",
+      "label": "Jun/26",
+      "year": 2026,
+      "month_num": 6,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 120.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 128.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129.0,
+        "Meia": 89.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 119.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 114.9,
+        "Meia": 57.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 180.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 219.9,
+        "Meia": 144.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-07",
+      "label": "Jul/26",
+      "year": 2026,
+      "month_num": 7,
+      "Acquamotion": {
+        "Adulto": 179.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 158.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 130,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 199.99,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Florybal": {
+        "Adulto": 190,
+        "Meia": 95,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 128,
+        "Meia": 64,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129,
+        "Meia": 89,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 199,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 139,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 134.9,
+        "Meia": 67,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 248,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 180,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 319.9,
+        "Meia": 184.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-08",
+      "label": "Ago/26",
+      "year": 2026,
+      "month_num": 8,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 130,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 190,
+        "Meia": 95,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 108,
+        "Meia": 64,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129,
+        "Meia": 89,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 129,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 134.9,
+        "Meia": 67,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 180,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-09",
+      "label": "Set/26",
+      "year": 2026,
+      "month_num": 9,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 130.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129.0,
+        "Meia": 89.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 129.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 134.9,
+        "Meia": 67.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-10",
+      "label": "Out/26",
+      "year": 2026,
+      "month_num": 10,
+      "Acquamotion": {
+        "Adulto": 164.5,
+        "Meia": 119.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 130.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 78.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129.0,
+        "Meia": 89.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 109.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 134.9,
+        "Meia": 67.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 219.0,
+        "Meia": 144.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    }
+  ],
+  "season": {
+    "2026-07": {
+      "Acquamotion": {
+        "Adulto": {
+          "baixa": 149.9,
+          "alta": 179.9
+        },
+        "Meia": {
+          "baixa": 104.5,
+          "alta": 129.5
+        }
+      },
+      "Alpen Park": {
+        "Adulto": {
+          "baixa": 148.9,
+          "alta": 158.9
+        }
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": {
+          "baixa": 130.0,
+          "alta": null
+        }
+      },
+      "Exceed Park": {
+        "Adulto": {
+          "baixa": 199.99,
+          "alta": 219.99
+        }
+      },
+      "Florybal": {
+        "Adulto": {
+          "baixa": 190.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 95.0,
+          "alta": null
+        }
+      },
+      "Le Jardin": {
+        "Adulto": {
+          "baixa": 35.0,
+          "alta": null
+        }
+      },
+      "Mini Mundo": {
+        "Adulto": {
+          "baixa": null,
+          "alta": 128.0
+        },
+        "Meia": {
+          "baixa": 64.0,
+          "alta": 64.0
+        }
+      },
+      "Mundo a Vapor": {
+        "Adulto": {
+          "baixa": 129.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 89.0,
+          "alta": null
+        }
+      },
+      "NBA Park": {
+        "Adulto": {
+          "baixa": 159.0,
+          "alta": 199.0
+        },
+        "Meia": {
+          "baixa": 124.5,
+          "alta": 124.5
+        }
+      },
+      "Olivas de Gramado": {
+        "Adulto": {
+          "baixa": 109.9,
+          "alta": 149.0
+        }
+      },
+      "Pé da Cascata": {
+        "Adulto": {
+          "baixa": 198.0,
+          "alta": 248.0
+        }
+      },
+      "Snowland": {
+        "Adulto": {
+          "baixa": 199.9,
+          "alta": 319.9
+        },
+        "Meia": {
+          "baixa": 129.5,
+          "alta": 184.5
+        }
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": {
+          "baixa": 119.9,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 79.9,
+          "alta": null
+        }
+      }
+    },
+    "2026-08": {
+      "Acquamotion": {
+        "Adulto": {
+          "baixa": 149.9,
+          "alta": 179.9
+        },
+        "Meia": {
+          "baixa": 104.5,
+          "alta": 129.5
+        }
+      },
+      "Alpen Park": {
+        "Adulto": {
+          "baixa": 148.9,
+          "alta": 158.9
+        }
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": {
+          "baixa": 130.0,
+          "alta": null
+        }
+      },
+      "Exceed Park": {
+        "Adulto": {
+          "baixa": 199.99,
+          "alta": 219.99
+        }
+      },
+      "Florybal": {
+        "Adulto": {
+          "baixa": 190.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 95.0,
+          "alta": null
+        }
+      },
+      "Le Jardin": {
+        "Adulto": {
+          "baixa": 35.0,
+          "alta": null
+        }
+      },
+      "Mini Mundo": {
+        "Adulto": {
+          "baixa": 108.0,
+          "alta": 128.0
+        },
+        "Meia": {
+          "baixa": 64.0,
+          "alta": 64.0
+        }
+      },
+      "Mundo a Vapor": {
+        "Adulto": {
+          "baixa": 129.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 89.0,
+          "alta": null
+        }
+      },
+      "NBA Park": {
+        "Adulto": {
+          "baixa": 159.0,
+          "alta": 199.0
+        },
+        "Meia": {
+          "baixa": 124.5,
+          "alta": 124.5
+        }
+      },
+      "Olivas de Gramado": {
+        "Adulto": {
+          "baixa": 109.9,
+          "alta": 149.0
+        }
+      },
+      "Pé da Cascata": {
+        "Adulto": {
+          "baixa": 198.0,
+          "alta": 248.0
+        }
+      },
+      "Snowland": {
+        "Adulto": {
+          "baixa": 199.9,
+          "alta": 319.9
+        },
+        "Meia": {
+          "baixa": 129.5,
+          "alta": 184.5
+        }
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": {
+          "baixa": 119.9,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 79.9,
+          "alta": null
+        }
+      }
+    },
+    "2026-09": {
+      "Acquamotion": {
+        "Adulto": {
+          "baixa": 149.9,
+          "alta": 179.9
+        },
+        "Meia": {
+          "baixa": 104.5,
+          "alta": 129.5
+        }
+      },
+      "Alpen Park": {
+        "Adulto": {
+          "baixa": 148.9,
+          "alta": 158.9
+        }
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": {
+          "baixa": 130.0,
+          "alta": null
+        }
+      },
+      "Florybal": {
+        "Adulto": {
+          "baixa": 190.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 95.0,
+          "alta": null
+        }
+      },
+      "Le Jardin": {
+        "Adulto": {
+          "baixa": 35.0,
+          "alta": null
+        }
+      },
+      "Mini Mundo": {
+        "Adulto": {
+          "baixa": 108.0,
+          "alta": 128.0
+        },
+        "Meia": {
+          "baixa": 64.0,
+          "alta": 64.0
+        }
+      },
+      "Mundo a Vapor": {
+        "Adulto": {
+          "baixa": 129.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 89.0,
+          "alta": null
+        }
+      },
+      "NBA Park": {
+        "Adulto": {
+          "baixa": 159.0,
+          "alta": 199.0
+        },
+        "Meia": {
+          "baixa": 124.5,
+          "alta": 124.5
+        }
+      },
+      "Olivas de Gramado": {
+        "Adulto": {
+          "baixa": 109.9,
+          "alta": 149.0
+        }
+      },
+      "Pé da Cascata": {
+        "Adulto": {
+          "baixa": 198.0,
+          "alta": 228.0
+        }
+      },
+      "Skyglass": {
+        "Adulto": {
+          "baixa": 165.0,
+          "alta": 180.0
+        }
+      },
+      "Snowland": {
+        "Adulto": {
+          "baixa": 199.9,
+          "alta": 319.9
+        },
+        "Meia": {
+          "baixa": 129.5,
+          "alta": 184.5
+        }
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": {
+          "baixa": 119.9,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 79.9,
+          "alta": null
+        }
+      }
+    },
+    "2026-10": {
+      "Acquamotion": {
+        "Adulto": {
+          "baixa": 149.9,
+          "alta": 179.9
+        },
+        "Meia": {
+          "baixa": 104.5,
+          "alta": 129.5
+        }
+      },
+      "Alpen Park": {
+        "Adulto": {
+          "baixa": 148.9,
+          "alta": 158.9
+        }
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": {
+          "baixa": 130.0,
+          "alta": null
+        }
+      },
+      "Florybal": {
+        "Adulto": {
+          "baixa": 190.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 95.0,
+          "alta": null
+        }
+      },
+      "Le Jardin": {
+        "Adulto": {
+          "baixa": 35.0,
+          "alta": null
+        }
+      },
+      "Mini Mundo": {
+        "Adulto": {
+          "baixa": 108.0,
+          "alta": 128.0
+        },
+        "Meia": {
+          "baixa": 64.0,
+          "alta": 64.0
+        }
+      },
+      "Mundo a Vapor": {
+        "Adulto": {
+          "baixa": 129.0,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 89.0,
+          "alta": null
+        }
+      },
+      "NBA Park": {
+        "Adulto": {
+          "baixa": 159.0,
+          "alta": 199.0
+        },
+        "Meia": {
+          "baixa": 124.5,
+          "alta": 124.5
+        }
+      },
+      "Olivas de Gramado": {
+        "Adulto": {
+          "baixa": 109.9,
+          "alta": 149.0
+        }
+      },
+      "Pé da Cascata": {
+        "Adulto": {
+          "baixa": 198.0,
+          "alta": 228.0
+        }
+      },
+      "Skyglass": {
+        "Adulto": {
+          "baixa": 165.0,
+          "alta": 180.0
+        }
+      },
+      "Snowland": {
+        "Adulto": {
+          "baixa": 199.9,
+          "alta": 319.9
+        },
+        "Meia": {
+          "baixa": 129.5,
+          "alta": 184.5
+        }
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": {
+          "baixa": 119.9,
+          "alta": null
+        },
+        "Meia": {
+          "baixa": 79.9,
+          "alta": null
+        }
+      }
+    }
+  },
+  "season_fixed": [
+    "Parque do Caracol",
+    "Bondinhos Aéreos",
+    "Florybal",
+    "Le Jardin",
+    "Mundo a Vapor",
+    "SpaceAdventure (NASA)"
+  ]
+}

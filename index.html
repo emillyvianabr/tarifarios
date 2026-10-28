@@ -117,6 +117,38 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:18px;bo
 .footer-brand{display:flex;align-items:center;gap:12px}
 footer code{background:var(--cream);border-radius:5px;padding:2px 4px}
 
+/* Novas seções: ranking, amplitude, temporada */
+.panel-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;justify-content:flex-end}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;background:#fff}
+.seg button{border:0;background:transparent;padding:0 12px;height:36px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button:hover{background:var(--cream-soft)}
+.seg button.on{background:var(--orange);color:#fff}
+.seg button:focus-visible{outline:2px solid var(--orange);outline-offset:-2px}
+.panel-tools .field select{height:36px;min-width:190px}
+.chart-container.sm{height:400px}
+.chart-container.md{height:360px}
+.legend-inline{display:flex;gap:16px;flex-wrap:wrap;font-size:10.5px;color:var(--muted);margin:4px 0 10px}
+.legend-inline i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.lg-real{background:var(--iter-pink)}.lg-sazonal{background:var(--iter-teal)}.lg-flat{background:#fff;box-shadow:inset 0 0 0 1.5px var(--line-2)}
+th.c,td.mx{text-align:center}
+td.mx{line-height:1.25;padding:8px 10px;min-width:92px}
+td.mx b{display:block;font-weight:700}
+td.mx small{display:block;font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+td.mx em{display:block;font-style:normal;font-size:8.5px;font-weight:700;color:var(--orange-dark);margin-top:2px}
+td.nat-real,tr.is-caracol td.nat-real{background:#FDECF1;box-shadow:inset 3px 0 0 var(--iter-pink)}
+td.nat-sazonal,tr.is-caracol td.nat-sazonal{background:#E8F5F4;box-shadow:inset 3px 0 0 var(--iter-teal)}
+td.nat-sem{color:#9AA9B2}
+td.faixa{font-size:11px;color:var(--muted)}
+.season-summary{font-size:11px;color:var(--text);margin:0 0 4px}
+.season-summary strong{color:var(--ink)}
+.panel + .panel{margin-top:14px}
+@media(max-width:650px){.panel-tools{justify-content:flex-start}.chart-container.sm{height:340px}}
+
+.notice{margin:0 0 16px;padding:11px 14px;border-radius:12px;font-size:11px;line-height:1.5;background:var(--cream-soft);border:1px solid var(--cream-line);color:var(--text)}
+.notice strong{color:var(--ink)}
+.notice.warn{background:#FDF3E3;border-color:#F0D9AE}
+.notice ul{margin:6px 0 0 16px;padding:0}
 @media(max-width:1120px){.filter-bar{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-actions{grid-column:1/-1}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.shell{width:min(94%,calc(100% - 28px))}.header-grid{grid-template-columns:1fr}.header-meta{border-left:0;border-top:2px solid var(--iter-teal);padding:12px 0 0;min-width:0}.section-intro{align-items:flex-start;flex-direction:column;gap:6px}.section-intro p{text-align:left}.chart-container{height:420px}}
 @media(max-width:650px){.shell{width:calc(100% - 24px)}.header-grid{padding:24px 0}.title-block h1{font-size:34px}.filter-bar{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr}.panel-head{flex-direction:column;gap:6px}.chart-container{height:360px}footer{flex-direction:column;align-items:flex-start}.footer-brand{flex-wrap:wrap}}
@@ -149,6 +181,7 @@ footer code{background:var(--cream);border-radius:5px;padding:2px 4px}
 </header>
 
 <main class="shell dashboard">
+  <div class="notice" id="dataNotice" role="status" hidden></div>
   <section class="filter-bar" aria-label="Filtros do dashboard">
     <div class="field">
       <label for="category">Categoria</label>
@@ -202,7 +235,7 @@ footer code{background:var(--cream);border-radius:5px;padding:2px 4px}
         <span class="section-kicker">Evolução</span>
         <h2>Histórico de preços</h2>
       </div>
-      <p>Passe o mouse sobre os pontos para ver os valores. O <strong>Parque do Caracol</strong> aparece em destaque.</p>
+      <p>Passe o mouse sobre os pontos: além do valor, aparece a <strong>variação contra o mesmo mês do ano anterior</strong> e, quando houver, se a mudança foi ajuste real ou sazonal. O <strong>Parque do Caracol</strong> aparece em destaque.</p>
     </div>
     <div class="panel hero-chart-panel">
       <div class="panel-head">
@@ -227,22 +260,110 @@ footer code{background:var(--cream);border-radius:5px;padding:2px 4px}
     <div class="panel">
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Atração</th><th>Preço atual</th><th>Mês anterior</th><th>Δ R$</th><th>Δ %</th></tr></thead>
+          <thead><tr><th>Atração</th><th>Preço atual</th><th>Mês anterior</th><th>Δ R$</th><th>Δ %</th><th>Mesmo mês, ano anterior</th><th>Δ % a/a</th></tr></thead>
           <tbody id="variationBody"></tbody>
         </table>
       </div>
     </div>
   </section>
 
+  <section class="section-block">
+    <div class="section-intro">
+      <div>
+        <span class="section-kicker">Reajustes</span>
+        <h2>Quem mais aumentou</h2>
+      </div>
+      <p>Compara o <strong>primeiro e o último mês com preço</strong> no recorte, ignorando meses sem dado. Alta em <strong>rosa</strong>, queda em <strong>verde</strong>.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 id="rankTitle">Maiores aumentos</h2>
+          <p id="rankSub">—</p>
+        </div>
+        <div class="panel-tools">
+          <div class="seg" id="rankScope" role="group" aria-label="Recorte do ranking"></div>
+          <div class="seg" id="rankMetric" role="group" aria-label="Métrica do ranking">
+            <button type="button" data-m="pct" class="on">%</button><button type="button" data-m="abs">R$</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container sm"><canvas id="rankChart" role="img" aria-label="Ranking das atrações por aumento de preço"></canvas></div>
+      <div class="foot" id="rankFoot">—</div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-intro">
+      <div>
+        <span class="section-kicker">Amplitude</span>
+        <h2>Quanto o preço oscila</h2>
+      </div>
+      <p>Menor e maior preço de cada atração no <strong>período selecionado</strong>. Barras longas indicam preço dinâmico; barras curtas, tarifa estável.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 id="ampTitle">Amplitude de preço</h2>
+          <p>Ordenado pela maior amplitude em R$. Passe o mouse para ver os meses do mínimo e do máximo.</p>
+        </div>
+      </div>
+      <div class="chart-container md"><canvas id="ampChart" role="img" aria-label="Amplitude de preço mínimo e máximo por atração"></canvas></div>
+      <div class="foot" id="ampFoot">—</div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-intro">
+      <div>
+        <span class="section-kicker">Temporada</span>
+        <h2>Ajuste real × variação sazonal</h2>
+      </div>
+      <p>Usa a grade de <strong>baixa e alta temporada</strong> das planilhas. Se o preço se move dentro da grade, é sazonal. Se sai dela ou a própria grade muda, é <strong>ajuste real</strong>.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 id="seasonTitle">Natureza da variação mês a mês</h2>
+          <p id="seasonSummary" class="season-summary">—</p>
+        </div>
+      </div>
+      <div class="legend-inline" aria-label="Legenda">
+        <span><i class="lg-real"></i>Ajuste real</span>
+        <span><i class="lg-sazonal"></i>Variação sazonal</span>
+        <span><i class="lg-flat"></i>Sem variação / sem classificação</span>
+        <span>“grade ajustada” = a faixa baixa/alta mudou, mesmo sem mudar o preço do mês</span>
+      </div>
+      <div class="table-wrap"><table id="seasonMatrix"></table></div>
+      <div class="foot" id="seasonFoot">—</div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 id="seasonChartTitle">Preço dentro da faixa de temporada</h2>
+          <p>A área sombreada vai do preço de baixa ao de alta temporada. Pontos rosa são ajustes reais; pontos verde-água, variações sazonais.</p>
+        </div>
+        <div class="panel-tools">
+          <div class="field"><label for="seasonAtt">Atração</label><select id="seasonAtt"></select></div>
+        </div>
+      </div>
+      <div class="chart-container md"><canvas id="seasonChart" role="img" aria-label="Preço mensal da atração dentro da faixa de baixa e alta temporada"></canvas></div>
+      <div class="foot" id="seasonChartFoot">—</div>
+    </div>
+  </section>
+
   <footer>
     <span class="footer-brand"><img src="assets/logo-grupo-iter-color.png" alt="Grupo Iter" width="91" height="22"><span>Histórico tarifário · Parque do Caracol e concorrência</span></span>
-    <span>Novos meses entram após a atualização manual dos dados</span>
+    <span id="footSource">Fonte: planilha dados_tarifario.xlsx</span>
   </footer>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
-const DATA = {"meta": {"source": "Historico_Tarifario_Caracol_Concorrencia (1).xlsx", "start_period": "2023-12", "end_period": "2026-10", "missing_policy": "Meses/valores sem informação são exibidos como 0.", "percent_policy": "Variação percentual não é calculada quando o mês anterior é 0."}, "attractions": ["Alpen Park", "Bondinhos Aéreos", "Florybal", "Le Jardin", "Mini Mundo", "Olivas de Gramado", "Parque do Caracol", "Pé da Cascata", "Skyglass", "Snowland"], "periods": ["2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"], "data": [{"period": "2023-12", "label": "Dez/23", "year": 2023, "month_num": 12, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 45.0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 169.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 319.0, "Meia": 159.9, "has_record": true}}, {"period": "2024-01", "label": "Jan/24", "year": 2024, "month_num": 1, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 45.0, "has_record": true}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-02", "label": "Fev/24", "year": 2024, "month_num": 2, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 169.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.0, "Meia": 159.5, "has_record": true}}, {"period": "2024-03", "label": "Mar/24", "year": 2024, "month_num": 3, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 169.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.0, "Meia": 159.5, "has_record": true}}, {"period": "2024-04", "label": "Abr/24", "year": 2024, "month_num": 4, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-05", "label": "Mai/24", "year": 2024, "month_num": 5, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-06", "label": "Jun/24", "year": 2024, "month_num": 6, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-07", "label": "Jul/24", "year": 2024, "month_num": 7, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.0, "Meia": 159.5, "has_record": true}}, {"period": "2024-08", "label": "Ago/24", "year": 2024, "month_num": 8, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-09", "label": "Set/24", "year": 2024, "month_num": 9, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-10", "label": "Out/24", "year": 2024, "month_num": 10, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-11", "label": "Nov/24", "year": 2024, "month_num": 11, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-12", "label": "Dez/24", "year": 2024, "month_num": 12, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-01", "label": "Jan/25", "year": 2025, "month_num": 1, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-02", "label": "Fev/25", "year": 2025, "month_num": 2, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 129.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 209.9, "Meia": 129.5, "has_record": true}}, {"period": "2025-03", "label": "Mar/25", "year": 2025, "month_num": 3, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-04", "label": "Abr/25", "year": 2025, "month_num": 4, "Alpen Park": {"Adulto": 128.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 100.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 101.4, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 170.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 259.0, "Meia": 164.5, "has_record": true}}, {"period": "2025-05", "label": "Mai/25", "year": 2025, "month_num": 5, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-06", "label": "Jun/25", "year": 2025, "month_num": 6, "Alpen Park": {"Adulto": 128.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 100.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 101.4, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 170.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 259.0, "Meia": 164.5, "has_record": true}}, {"period": "2025-07", "label": "Jul/25", "year": 2025, "month_num": 7, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 118.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 170.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 279.9, "Meia": 164.5, "has_record": true}}, {"period": "2025-08", "label": "Ago/25", "year": 2025, "month_num": 8, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 97.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.9, "has_record": true}}, {"period": "2025-09", "label": "Set/25", "year": 2025, "month_num": 9, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-10", "label": "Out/25", "year": 2025, "month_num": 10, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 97.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2025-11", "label": "Nov/25", "year": 2025, "month_num": 11, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 108.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 97.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 288.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2025-12", "label": "Dez/25", "year": 2025, "month_num": 12, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 108.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 83.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 248.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.9, "Meia": 164.5, "has_record": true}}, {"period": "2026-01", "label": "Jan/26", "year": 2026, "month_num": 1, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-02", "label": "Fev/26", "year": 2026, "month_num": 2, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 68.9, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 95.0, "Meia": 47.5, "has_record": true}, "Pé da Cascata": {"Adulto": 148.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-03", "label": "Mar/26", "year": 2026, "month_num": 3, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 68.9, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 111.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 129.5, "Meia": 64.75, "has_record": true}}, {"period": "2026-04", "label": "Abr/26", "year": 2026, "month_num": 4, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 119.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 148.5, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.9, "Meia": 144.5, "has_record": true}}, {"period": "2026-05", "label": "Mai/26", "year": 2026, "month_num": 5, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.9, "Meia": 144.5, "has_record": true}}, {"period": "2026-06", "label": "Jun/26", "year": 2026, "month_num": 6, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 128.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 119.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 180.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.9, "Meia": 144.5, "has_record": true}}, {"period": "2026-07", "label": "Jul/26", "year": 2026, "month_num": 7, "Alpen Park": {"Adulto": 158.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190, "Meia": 95, "has_record": true}, "Le Jardin": {"Adulto": 35, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 128, "Meia": 64, "has_record": true}, "Olivas de Gramado": {"Adulto": 139, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67, "has_record": true}, "Pé da Cascata": {"Adulto": 248, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 180, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 319.9, "Meia": 184.5, "has_record": true}}, {"period": "2026-08", "label": "Ago/26", "year": 2026, "month_num": 8, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190, "Meia": 95, "has_record": true}, "Le Jardin": {"Adulto": 35, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 108, "Meia": 64, "has_record": true}, "Olivas de Gramado": {"Adulto": 129, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67, "has_record": true}, "Pé da Cascata": {"Adulto": 198, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 180, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-09", "label": "Set/26", "year": 2026, "month_num": 9, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 129.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-10", "label": "Out/26", "year": 2026, "month_num": 10, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 78.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 109.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.0, "Meia": 144.5, "has_record": true}}]};
+const EMBEDDED = {"meta": {"source": "Historico_Tarifario_Caracol_Concorrencia (1).xlsx", "start_period": "2023-12", "end_period": "2026-10", "missing_policy": "Meses/valores sem informação são exibidos como 0.", "percent_policy": "Variação percentual não é calculada quando o mês anterior é 0."}, "attractions": ["Alpen Park", "Bondinhos Aéreos", "Florybal", "Le Jardin", "Mini Mundo", "Olivas de Gramado", "Parque do Caracol", "Pé da Cascata", "Skyglass", "Snowland"], "periods": ["2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"], "data": [{"period": "2023-12", "label": "Dez/23", "year": 2023, "month_num": 12, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 45.0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 169.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 319.0, "Meia": 159.9, "has_record": true}}, {"period": "2024-01", "label": "Jan/24", "year": 2024, "month_num": 1, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 45.0, "has_record": true}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-02", "label": "Fev/24", "year": 2024, "month_num": 2, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 169.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.0, "Meia": 159.5, "has_record": true}}, {"period": "2024-03", "label": "Mar/24", "year": 2024, "month_num": 3, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 169.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.0, "Meia": 159.5, "has_record": true}}, {"period": "2024-04", "label": "Abr/24", "year": 2024, "month_num": 4, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-05", "label": "Mai/24", "year": 2024, "month_num": 5, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-06", "label": "Jun/24", "year": 2024, "month_num": 6, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-07", "label": "Jul/24", "year": 2024, "month_num": 7, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 150.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.0, "Meia": 159.5, "has_record": true}}, {"period": "2024-08", "label": "Ago/24", "year": 2024, "month_num": 8, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-09", "label": "Set/24", "year": 2024, "month_num": 9, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-10", "label": "Out/24", "year": 2024, "month_num": 10, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-11", "label": "Nov/24", "year": 2024, "month_num": 11, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2024-12", "label": "Dez/24", "year": 2024, "month_num": 12, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-01", "label": "Jan/25", "year": 2025, "month_num": 1, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-02", "label": "Fev/25", "year": 2025, "month_num": 2, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 90.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 129.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 209.9, "Meia": 129.5, "has_record": true}}, {"period": "2025-03", "label": "Mar/25", "year": 2025, "month_num": 3, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-04", "label": "Abr/25", "year": 2025, "month_num": 4, "Alpen Park": {"Adulto": 128.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 100.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 101.4, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 170.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 259.0, "Meia": 164.5, "has_record": true}}, {"period": "2025-05", "label": "Mai/25", "year": 2025, "month_num": 5, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-06", "label": "Jun/25", "year": 2025, "month_num": 6, "Alpen Park": {"Adulto": 128.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 100.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 101.4, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 170.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 259.0, "Meia": 164.5, "has_record": true}}, {"period": "2025-07", "label": "Jul/25", "year": 2025, "month_num": 7, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 118.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 170.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 279.9, "Meia": 164.5, "has_record": true}}, {"period": "2025-08", "label": "Ago/25", "year": 2025, "month_num": 8, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 150.0, "Meia": 75.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 97.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.9, "has_record": true}}, {"period": "2025-09", "label": "Set/25", "year": 2025, "month_num": 9, "Alpen Park": {"Adulto": 0, "Meia": 0, "has_record": false}, "Bondinhos Aéreos": {"Adulto": 0, "Meia": 0, "has_record": false}, "Florybal": {"Adulto": 0, "Meia": 0, "has_record": false}, "Le Jardin": {"Adulto": 0, "Meia": 0, "has_record": false}, "Mini Mundo": {"Adulto": 0, "Meia": 0, "has_record": false}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": false}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 0, "Meia": 0, "has_record": false}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": false}, "Snowland": {"Adulto": 0, "Meia": 0, "has_record": false}}, {"period": "2025-10", "label": "Out/25", "year": 2025, "month_num": 10, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 30.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 88.0, "Meia": 58.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 97.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2025-11", "label": "Nov/25", "year": 2025, "month_num": 11, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 108.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 97.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 288.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2025-12", "label": "Dez/25", "year": 2025, "month_num": 12, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 108.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 83.3, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 248.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.9, "Meia": 164.5, "has_record": true}}, {"period": "2026-01", "label": "Jan/26", "year": 2026, "month_num": 1, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 0, "Meia": 0, "has_record": false}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 299.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-02", "label": "Fev/26", "year": 2026, "month_num": 2, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 68.9, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 95.0, "Meia": 47.5, "has_record": true}, "Pé da Cascata": {"Adulto": 148.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 145.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-03", "label": "Mar/26", "year": 2026, "month_num": 3, "Alpen Park": {"Adulto": 138.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 68.9, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 111.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 129.5, "Meia": 64.75, "has_record": true}}, {"period": "2026-04", "label": "Abr/26", "year": 2026, "month_num": 4, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 180.0, "Meia": 90.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 119.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 148.5, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.9, "Meia": 144.5, "has_record": true}}, {"period": "2026-05", "label": "Mai/26", "year": 2026, "month_num": 5, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 99.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.9, "Meia": 144.5, "has_record": true}}, {"period": "2026-06", "label": "Jun/26", "year": 2026, "month_num": 6, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 120.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 128.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 119.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 114.9, "Meia": 57.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 180.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.9, "Meia": 144.5, "has_record": true}}, {"period": "2026-07", "label": "Jul/26", "year": 2026, "month_num": 7, "Alpen Park": {"Adulto": 158.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190, "Meia": 95, "has_record": true}, "Le Jardin": {"Adulto": 35, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 128, "Meia": 64, "has_record": true}, "Olivas de Gramado": {"Adulto": 139, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67, "has_record": true}, "Pé da Cascata": {"Adulto": 248, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 180, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 319.9, "Meia": 184.5, "has_record": true}}, {"period": "2026-08", "label": "Ago/26", "year": 2026, "month_num": 8, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190, "Meia": 95, "has_record": true}, "Le Jardin": {"Adulto": 35, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 108, "Meia": 64, "has_record": true}, "Olivas de Gramado": {"Adulto": 129, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67, "has_record": true}, "Pé da Cascata": {"Adulto": 198, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 180, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-09", "label": "Set/26", "year": 2026, "month_num": 9, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 64.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 129.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 199.9, "Meia": 129.5, "has_record": true}}, {"period": "2026-10", "label": "Out/26", "year": 2026, "month_num": 10, "Alpen Park": {"Adulto": 148.9, "Meia": 0, "has_record": true}, "Bondinhos Aéreos": {"Adulto": 130.0, "Meia": 0, "has_record": true}, "Florybal": {"Adulto": 190.0, "Meia": 95.0, "has_record": true}, "Le Jardin": {"Adulto": 35.0, "Meia": 0, "has_record": true}, "Mini Mundo": {"Adulto": 98.0, "Meia": 78.0, "has_record": true}, "Olivas de Gramado": {"Adulto": 109.0, "Meia": 0, "has_record": true}, "Parque do Caracol": {"Adulto": 134.9, "Meia": 67.0, "has_record": true}, "Pé da Cascata": {"Adulto": 198.0, "Meia": 0, "has_record": true}, "Skyglass": {"Adulto": 165.0, "Meia": 0, "has_record": true}, "Snowland": {"Adulto": 219.0, "Meia": 144.5, "has_record": true}}], "season": {"2026-07": {"Alpen Park": {"Adulto": {"baixa": 148.9, "alta": 158.9}}, "Bondinhos Aéreos": {"Adulto": {"baixa": 130.0, "alta": null}}, "Florybal": {"Adulto": {"baixa": 190.0, "alta": null}, "Meia": {"baixa": 95.0, "alta": null}}, "Le Jardin": {"Adulto": {"baixa": 35.0, "alta": null}}, "Mini Mundo": {"Adulto": {"baixa": null, "alta": 128.0}, "Meia": {"baixa": 64.0, "alta": 64.0}}, "Olivas de Gramado": {"Adulto": {"baixa": 109.9, "alta": 149.0}}, "Pé da Cascata": {"Adulto": {"baixa": 198.0, "alta": 248.0}}, "Snowland": {"Adulto": {"baixa": 199.9, "alta": 319.9}, "Meia": {"baixa": 129.5, "alta": 184.5}}}, "2026-08": {"Alpen Park": {"Adulto": {"baixa": 148.9, "alta": 158.9}}, "Bondinhos Aéreos": {"Adulto": {"baixa": 130.0, "alta": null}}, "Florybal": {"Adulto": {"baixa": 190.0, "alta": null}, "Meia": {"baixa": 95.0, "alta": null}}, "Le Jardin": {"Adulto": {"baixa": 35.0, "alta": null}}, "Mini Mundo": {"Adulto": {"baixa": 108.0, "alta": 128.0}, "Meia": {"baixa": 64.0, "alta": 64.0}}, "Olivas de Gramado": {"Adulto": {"baixa": 109.9, "alta": 149.0}}, "Pé da Cascata": {"Adulto": {"baixa": 198.0, "alta": 248.0}}, "Snowland": {"Adulto": {"baixa": 199.9, "alta": 319.9}, "Meia": {"baixa": 129.5, "alta": 184.5}}}, "2026-09": {"Alpen Park": {"Adulto": {"baixa": 148.9, "alta": 158.9}}, "Bondinhos Aéreos": {"Adulto": {"baixa": 130.0, "alta": null}}, "Florybal": {"Adulto": {"baixa": 190.0, "alta": null}, "Meia": {"baixa": 95.0, "alta": null}}, "Le Jardin": {"Adulto": {"baixa": 35.0, "alta": null}}, "Mini Mundo": {"Adulto": {"baixa": 108.0, "alta": 128.0}, "Meia": {"baixa": 64.0, "alta": 64.0}}, "Olivas de Gramado": {"Adulto": {"baixa": 109.9, "alta": 149.0}}, "Pé da Cascata": {"Adulto": {"baixa": 198.0, "alta": 228.0}}, "Skyglass": {"Adulto": {"baixa": 165.0, "alta": 180.0}}, "Snowland": {"Adulto": {"baixa": 199.9, "alta": 319.9}, "Meia": {"baixa": 129.5, "alta": 184.5}}}, "2026-10": {"Alpen Park": {"Adulto": {"baixa": 148.9, "alta": 158.9}}, "Bondinhos Aéreos": {"Adulto": {"baixa": 130.0, "alta": null}}, "Florybal": {"Adulto": {"baixa": 190.0, "alta": null}, "Meia": {"baixa": 95.0, "alta": null}}, "Le Jardin": {"Adulto": {"baixa": 35.0, "alta": null}}, "Mini Mundo": {"Adulto": {"baixa": 108.0, "alta": 128.0}, "Meia": {"baixa": 64.0, "alta": 64.0}}, "Olivas de Gramado": {"Adulto": {"baixa": 109.9, "alta": 149.0}}, "Pé da Cascata": {"Adulto": {"baixa": 198.0, "alta": 228.0}}, "Skyglass": {"Adulto": {"baixa": 165.0, "alta": 180.0}}, "Snowland": {"Adulto": {"baixa": 199.9, "alta": 319.9}, "Meia": {"baixa": 129.5, "alta": 184.5}}}}, "season_fixed": ["Parque do Caracol", "Bondinhos Aéreos", "Florybal", "Le Jardin"]};
+
+function boot(DATA){
 
 DATA.meta.end_period = DATA.periods[DATA.periods.length - 1];
 const money = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v || 0);
@@ -332,11 +453,21 @@ function update(){
         legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,usePointStyle:true,padding:16,font:{size:11}}},
         tooltip:{
           backgroundColor:'#233744', titleFont:{weight:'700'}, padding:10, cornerRadius:8,
-          callbacks:{label:(ctx)=>{
-            const v=ctx.parsed.y;
-            if(v===null) return ctx.dataset.label+': —';
-            return ctx.dataset.label+': '+(metric==='pct'?pct(v):money(v));
-          }}
+          callbacks:{
+            label:(ctx)=>{
+              const v=ctx.parsed.y;
+              if(v===null) return ctx.dataset.label+': —';
+              return ctx.dataset.label+': '+(metric==='pct'?pct(v):money(v));
+            },
+            afterLabel:(ctx)=>{
+              const a=ctx.dataset.label, i=s+ctx.dataIndex, lines=[];
+              if(metric!=='price'){ const pr=priceAt(a,cat,i); lines.push('Preço: '+(pr>0?money(pr):'—')); }
+              lines.push(yoyLine(yoyInfo(a,cat,i)));
+              const c=classify(a,cat,i);
+              if(c.nat==='real'||c.nat==='sazonal') lines.push('Natureza: '+NAT_LABEL[c.nat]);
+              return lines;
+            }
+          }
         }
       },
       scales:{
@@ -373,15 +504,410 @@ function update(){
     const cls=x.d>0?'up':x.d<0?'down':'zero';
     const tr=document.createElement('tr');
     if(x.a===FOCO) tr.className='is-caracol';
-    tr.innerHTML=`<td>${x.a}</td><td>${money(x.v)}</td><td>${money(x.prev)}</td><td class="${cls}">${x.d>0?'+':''}${money(x.d)}</td><td class="${cls}">${p!==null&&p>0?'+':''}${pct(p)}</td>`;
+    const y=yoyInfo(x.a,cat,finalIdx), yc=y.ok?(y.d>0?'up':y.d<0?'down':'zero'):'zero';
+    tr.innerHTML=`<td>${x.a}</td><td>${money(x.v)}</td><td>${money(x.prev)}</td><td class="${cls}">${x.d>0?'+':''}${money(x.d)}</td><td class="${cls}">${p!==null&&p>0?'+':''}${pct(p)}</td><td title="${y.label||''}">${y.ok?money(y.prev):'—'}</td><td class="${yc}">${y.ok?sPct(y.p):'—'}</td>`;
     els.body.appendChild(tr);
   });
+  renderRank(); renderAmp(); renderSeason();
+}
+
+
+// ===== Utilidades de comparação =====
+const priceAt=(a,cat,i)=>{ const r=DATA.data[i]; return r&&r[a]?(r[a][cat]||0):0; };
+const sgn=v=>v>0?'+':v<0?'−':'';
+const sMoney=d=>sgn(d)+money(Math.abs(d));
+const sPct=p=>sgn(p)+pct(Math.abs(p));
+function yoyInfo(a,cat,i){
+  const [y,m]=DATA.periods[i].split('-');
+  const j=DATA.periods.indexOf((+y-1)+'-'+m);
+  if(j<0) return {ok:false,label:null};
+  const cur=priceAt(a,cat,i), prev=priceAt(a,cat,j), label=DATA.data[j].label;
+  if(!(cur>0)||!(prev>0)) return {ok:false,label,prev,cur};
+  return {ok:true,label,prev,cur,d:cur-prev,p:(cur-prev)/prev*100};
+}
+function yoyLine(y){
+  if(y.ok) return `vs ${y.label} (${money(y.prev)}): ${sMoney(y.d)} (${sPct(y.p)})`;
+  return y.label ? `vs ${y.label}: sem dado` : 'vs ano anterior: fora do histórico';
+}
+
+// ===== Temporada: grade baixa/alta das planilhas =====
+const SEAS=DATA.season||{}, FIXED=new Set(DATA.season_fixed||[]);
+const SEAS_START=Object.keys(SEAS).sort()[0]||null;
+const EPS=0.005, feq=(x,y)=>Math.abs(x-y)<EPS;
+const NAT_LABEL={real:'Ajuste real',sazonal:'Variação sazonal',flat:'Sem variação',sem:'Sem classificação'};
+const POS_SHORT={Alta:'Alta',Baixa:'Baixa','Intermediária':'Interm.',Fixo:'Fixo',Fora:'Fora da faixa'};
+function gridOf(a,cat,period){
+  const g=SEAS[period]&&SEAS[period][a]&&SEAS[period][a][cat];
+  return g?{b:g.baixa,a:g.alta}:null;
+}
+function position(a,price,g){
+  if(!(price>0)) return null;
+  if(FIXED.has(a)) return 'Fixo';
+  if(!g) return null;
+  const hb=g.b!=null, ha=g.a!=null;
+  if(hb&&ha){
+    if(price>g.a+EPS||price<g.b-EPS) return 'Fora';
+    if(feq(g.a,g.b)) return 'Fixo';
+    if(feq(price,g.a)) return 'Alta';
+    if(feq(price,g.b)) return 'Baixa';
+    return 'Intermediária';
+  }
+  if(ha){ if(feq(price,g.a)) return 'Alta'; return price>g.a?'Fora':null; }
+  if(hb){ return feq(price,g.b)?'Fixo':'Fora'; }
+  return null;
+}
+// nat: real | sazonal | flat | sem
+function classify(a,cat,i){
+  const price=priceAt(a,cat,i), per=DATA.periods[i];
+  const g=gridOf(a,cat,per), pos=position(a,price,g);
+  const out={price,pos,nat:'sem',gridNote:null,prev:0,g};
+  if(i===0||!(price>0)||!SEAS_START||per<SEAS_START) return out;
+  const prev=priceAt(a,cat,i-1); out.prev=prev;
+  const pg=gridOf(a,cat,DATA.periods[i-1]);
+  if(g&&pg){
+    const ch=[];
+    if(g.b!=null&&pg.b!=null&&!feq(g.b,pg.b)) ch.push(`baixa ${money(pg.b)} → ${money(g.b)}`);
+    if(g.a!=null&&pg.a!=null&&!feq(g.a,pg.a)) ch.push(`alta ${money(pg.a)} → ${money(g.a)}`);
+    if(ch.length) out.gridNote=ch.join(' · ');
+  }
+  if(!(prev>0)) return out;
+  if(feq(price,prev)){ out.nat='flat'; return out; }
+  if(pos===null) return out;
+  out.nat=(pos==='Fora'||pos==='Fixo'||out.gridNote)?'real':'sazonal';
+  return out;
+}
+
+// ===== Ranking de aumentos =====
+let rankChart, rankScope='sel', rankMetricKey='pct';
+function growth(a,cat,from,to){
+  let f=-1,l=-1;
+  for(let i=from;i<=to;i++){ if(priceAt(a,cat,i)>0){ if(f<0) f=i; l=i; } }
+  if(f<0||f===l) return null;
+  const p0=priceAt(a,cat,f), p1=priceAt(a,cat,l);
+  return {f,l,p0,p1,d:p1-p0,p:(p1-p0)/p0*100};
+}
+const YEARS=[...new Set(DATA.periods.map(p=>+p.slice(0,4)))].filter(y=>y>=2024).sort((a,b)=>b-a);
+(function buildRankScope(){
+  const box=document.getElementById('rankScope');
+  [['sel','Período selecionado'],...YEARS.map(y=>[String(y),String(y)])].forEach(([k,t])=>{
+    const b=document.createElement('button'); b.type='button'; b.dataset.k=k; b.textContent=t;
+    if(k===rankScope) b.className='on';
+    b.onclick=()=>{ rankScope=k; [...box.children].forEach(x=>x.classList.toggle('on',x===b)); renderRank(); };
+    box.appendChild(b);
+  });
+  const mbox=document.getElementById('rankMetric');
+  [...mbox.children].forEach(b=>b.onclick=()=>{ rankMetricKey=b.dataset.m; [...mbox.children].forEach(x=>x.classList.toggle('on',x===b)); renderRank(); });
+})();
+const barLabels={id:'barLabels',afterDatasetsDraw(c,_,opt){
+  if(!opt||!opt.fmt) return;
+  const ctx=c.ctx; ctx.save();
+  ctx.font='600 11px '+Chart.defaults.font.family; ctx.fillStyle='#35505F'; ctx.textBaseline='middle';
+  c.getDatasetMeta(0).data.forEach((bar,i)=>{
+    const v=c.data.datasets[0].data[i], t=opt.fmt(v,i); if(t==null) return;
+    const neg=!Array.isArray(v)&&v<0;
+    ctx.textAlign='left'; ctx.fillText(t, neg?bar.base+6:bar.x+6, bar.y);
+  });
+  ctx.restore();
+}};
+function renderRank(){
+  const cat=els.category.value, atts=selectedAttractions();
+  const s=+els.start.value, e=+els.end.value;
+  let from=s, to=e, scopeLabel=DATA.data[s].label+' → '+DATA.data[e].label;
+  if(rankScope!=='sel'){
+    const idx=DATA.periods.map((p,i)=>p.startsWith(rankScope)?i:-1).filter(i=>i>=0);
+    from=idx[0]; to=idx[idx.length-1]; scopeLabel='ano de '+rankScope;
+  }
+  const rows=[], semDado=[];
+  atts.forEach(a=>{ const g=growth(a,cat,from,to); g?rows.push({a,...g}):semDado.push(a); });
+  const key=rankMetricKey==='pct'?'p':'d';
+  rows.sort((x,y)=>y[key]-x[key]);
+  document.getElementById('rankTitle').textContent='Maiores aumentos · '+(rankScope==='sel'?'período selecionado':rankScope);
+  document.getElementById('rankSub').textContent=`Preço ${cat}, ${scopeLabel}. Variação entre o primeiro e o último mês com preço.`;
+  const fmt=v=>rankMetricKey==='pct'?sPct(v):sMoney(v);
+  if(rankChart) rankChart.destroy();
+  rankChart=new Chart(document.getElementById('rankChart'),{
+    type:'bar', plugins:[barLabels],
+    data:{labels:rows.map(r=>r.a),datasets:[{
+      data:rows.map(r=>r[key]),
+      backgroundColor:rows.map(r=>r[key]>0?'#EB4A75':r[key]<0?'#23885A':'#B1C6CE'),
+      borderColor:'#233744', borderWidth:rows.map(r=>r.a===FOCO?3:0), borderRadius:4, maxBarThickness:26
+    }]},
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false, layout:{padding:{right:70}},
+      plugins:{legend:{display:false},barLabels:{fmt},
+        tooltip:{backgroundColor:'#233744',padding:10,cornerRadius:8,callbacks:{
+          title:c=>c[0].label,
+          label:c=>{ const r=rows[c.dataIndex]; return [
+            `${DATA.data[r.f].label}: ${money(r.p0)}  →  ${DATA.data[r.l].label}: ${money(r.p1)}`,
+            `Variação: ${sMoney(r.d)} (${sPct(r.p)})`]; }
+        }}},
+      scales:{
+        x:{border:{display:false},grid:{color:'#EEF2F3'},ticks:{font:{size:10},callback:v=>rankMetricKey==='pct'?v+'%':'R$ '+v}},
+        y:{grid:{display:false},border:{color:'#E3E8EA'},ticks:{font:ctx=>({size:11,weight:rows[ctx.index]&&rows[ctx.index].a===FOCO?'700':'400'}),color:'#35505F'}}
+      }
+    }
+  });
+  const ups=rows.filter(r=>r[key]>0).length;
+  const car=rows.findIndex(r=>r.a===FOCO);
+  document.getElementById('rankFoot').innerHTML=
+    `<strong>${ups}</strong> de ${rows.length} atrações subiram no recorte.`+
+    (car>=0?` O <strong>Parque do Caracol</strong> ocupa a <strong>${car+1}ª posição</strong> (contorno escuro).`:'')+
+    (semDado.length?` Sem 2 meses com preço no recorte: ${semDado.join(', ')}.`:'')+
+    ` A variação inclui o efeito sazonal; para separar ajuste real de sazonal, veja a seção <strong>Temporada</strong>.`;
+}
+
+// ===== Amplitude =====
+let ampChart;
+function renderAmp(){
+  const cat=els.category.value, atts=selectedAttractions();
+  const s=+els.start.value, e=+els.end.value;
+  const rows=[], semDado=[];
+  atts.forEach(a=>{
+    let mn=Infinity,mx=-Infinity,im=-1,ix=-1;
+    for(let i=s;i<=e;i++){ const v=priceAt(a,cat,i); if(v>0){ if(v<mn){mn=v;im=i;} if(v>mx){mx=v;ix=i;} } }
+    if(im<0) semDado.push(a); else rows.push({a,mn,mx,im,ix,amp:mx-mn,ampP:(mx-mn)/mn*100,cur:priceAt(a,cat,e)});
+  });
+  rows.sort((x,y)=>y.amp-x.amp);
+  document.getElementById('ampTitle').textContent=`Amplitude de preço ${cat} · ${DATA.data[s].label} → ${DATA.data[e].label}`;
+  if(ampChart) ampChart.destroy();
+  ampChart=new Chart(document.getElementById('ampChart'),{
+    type:'bar', plugins:[barLabels],
+    data:{labels:rows.map(r=>r.a),datasets:[{
+      data:rows.map(r=>[r.mn,r.mx]), backgroundColor:rows.map(r=>corDe(r.a)),
+      borderColor:'#233744', borderWidth:rows.map(r=>r.a===FOCO?3:0), borderRadius:4, borderSkipped:false, minBarLength:5, maxBarThickness:24
+    }]},
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false, layout:{padding:{right:150}},
+      plugins:{legend:{display:false},
+        barLabels:{fmt:(v)=>feq(v[0],v[1])?money(v[0]):`${money(v[0])} – ${money(v[1])}`},
+        tooltip:{backgroundColor:'#233744',padding:10,cornerRadius:8,callbacks:{
+          title:c=>c[0].label,
+          label:c=>{ const r=rows[c.dataIndex]; return [
+            `Mínimo: ${money(r.mn)} (${DATA.data[r.im].label})`,
+            `Máximo: ${money(r.mx)} (${DATA.data[r.ix].label})`,
+            `Amplitude: ${money(r.amp)} (${pct(r.ampP)})`,
+            `Último mês: ${r.cur>0?money(r.cur):'sem dado'}`]; }
+        }}},
+      scales:{
+        x:{beginAtZero:true,border:{display:false},grid:{color:'#EEF2F3'},ticks:{font:{size:10},callback:v=>'R$ '+v}},
+        y:{grid:{display:false},border:{color:'#E3E8EA'},ticks:{font:ctx=>({size:11,weight:rows[ctx.index]&&rows[ctx.index].a===FOCO?'700':'400'}),color:'#35505F'}}
+      }
+    }
+  });
+  const fixas=rows.filter(r=>feq(r.mn,r.mx)).map(r=>r.a);
+  document.getElementById('ampFoot').innerHTML=
+    (fixas.length?`Sem oscilação no período: <strong>${fixas.join(', ')}</strong>. `:'')+
+    `Meses sem dado (R$ 0) são ignorados no cálculo de mínimo e máximo.`+
+    (semDado.length?` Sem nenhum preço no período: ${semDado.join(', ')}.`:'');
+}
+
+// ===== Temporada: matriz e gráfico de faixa =====
+let seasonChartObj;
+const seasonSel=document.getElementById('seasonAtt');
+DATA.attractions.forEach(a=>{ const o=document.createElement('option'); o.value=a; o.textContent=a; seasonSel.appendChild(o); });
+seasonSel.value=DATA.attractions.includes('Snowland')?'Snowland':DATA.attractions[0];
+seasonSel.addEventListener('change',()=>renderSeasonChart());
+function faixaTxt(a,g){
+  if(FIXED.has(a)) return 'Preço único';
+  if(g&&g.b!=null&&g.a!=null) return feq(g.a,g.b)?'Preço único':`${money(g.b)} – ${money(g.a)}`;
+  return 'Sem grade';
+}
+function renderSeason(){
+  const cat=els.category.value, atts=selectedAttractions();
+  const s=+els.start.value, e=+els.end.value;
+  const table=document.getElementById('seasonMatrix');
+  const cols=[]; for(let i=s;i<=e;i++){ if(SEAS_START&&DATA.periods[i]>=SEAS_START) cols.push(i); }
+  document.getElementById('seasonTitle').textContent=`Natureza da variação mês a mês · ${cat}`;
+  if(!cols.length){
+    table.innerHTML='';
+    document.getElementById('seasonSummary').textContent='A grade de temporada está disponível a partir de '+(SEAS_START?DATA.data[DATA.periods.indexOf(SEAS_START)].label:'—')+'. Amplie o período para ver a classificação.';
+    document.getElementById('seasonFoot').textContent='';
+    renderSeasonChart(); return;
+  }
+  const rows=atts.filter(a=>cols.some(i=>priceAt(a,cat,i)>0));
+  let head='<thead><tr><th>Atração</th>'+cols.map(i=>`<th class="c">${DATA.data[i].label}</th>`).join('')+'<th class="c">Faixa baixa–alta (último mês)</th></tr></thead>';
+  let body='<tbody>';
+  rows.forEach(a=>{
+    body+=`<tr${a===FOCO?' class="is-caracol"':''}><td>${a}</td>`;
+    cols.forEach(i=>{
+      const c=classify(a,cat,i);
+      if(!(c.price>0)){ body+='<td class="mx nat-sem">—</td>'; return; }
+      const y=yoyInfo(a,cat,i);
+      const tip=[`${a} · ${DATA.data[i].label}`,`Preço: ${money(c.price)}`,
+        `Faixa: ${faixaTxt(a,c.g)}`, c.pos?`Posição: ${POS_SHORT[c.pos]==='Fora da faixa'?'fora da faixa':c.pos}`:null,
+        c.prev>0?`Mês anterior: ${money(c.prev)} (${sMoney(c.price-c.prev)})`:null,
+        `Natureza: ${NAT_LABEL[c.nat]}`, c.gridNote?`Grade ajustada: ${c.gridNote}`:null, yoyLine(y)].filter(Boolean).join('\n');
+      body+=`<td class="mx nat-${c.nat}" title="${tip.replace(/"/g,'&quot;')}"><b>${money(c.price)}</b>${c.pos?`<small>${POS_SHORT[c.pos]}</small>`:''}${c.gridNote?'<em>grade ajustada</em>':''}</td>`;
+    });
+    const lastG=gridOf(a,cat,DATA.periods[cols[cols.length-1]]);
+    body+=`<td class="faixa" style="text-align:center">${faixaTxt(a,lastG)}</td></tr>`;
+  });
+  body+='</tbody>';
+  table.innerHTML=head+body;
+  // resumo do último mês
+  const last=cols[cols.length-1], cnt={real:[],sazonal:[],flat:[],sem:[]};
+  rows.forEach(a=>{ const c=classify(a,cat,last); if(c.price>0) cnt[c.nat].push(a); });
+  const lst=arr=>arr.length?` (${arr.join(', ')})`:'';
+  document.getElementById('seasonSummary').innerHTML=
+    `Em <strong>${DATA.data[last].label}</strong>: <strong>${cnt.real.length}</strong> ajuste(s) real(is)${lst(cnt.real)}, `+
+    `<strong>${cnt.sazonal.length}</strong> sazonal(is)${lst(cnt.sazonal)}, `+
+    `<strong>${cnt.flat.length}</strong> sem variação e <strong>${cnt.sem.length}</strong> sem classificação.`;
+  document.getElementById('seasonFoot').innerHTML=
+    `<strong>Como classificamos:</strong> o preço do mês é comparado à faixa baixa–alta informada nas planilhas. Mudança dentro da faixa, com a faixa inalterada, é <strong>sazonal</strong>. Mudança para fora da faixa, mudança em atração sem preço de temporada ou alteração da própria faixa é <strong>ajuste real</strong>. `+
+    `A grade só existe a partir de ${DATA.data[DATA.periods.indexOf(SEAS_START)].label}; nesse primeiro mês a faixa anterior não é conhecida, então a classificação usa apenas a posição do preço. Atrações sem faixa informada ficam “sem classificação”.`;
+  renderSeasonChart();
+}
+function renderSeasonChart(){
+  const a=seasonSel.value, cat=els.category.value;
+  const s=+els.start.value, e=+els.end.value;
+  const sIdx=SEAS_START?DATA.periods.indexOf(SEAS_START):-1;
+  let from=Math.max(s,sIdx), to=e, aviso='';
+  if(sIdx<0||from>to){ from=Math.max(sIdx,0); to=DATA.periods.length-1; aviso=' O período selecionado é anterior à grade; mostrando todos os meses com grade.'; }
+  const idx=[]; for(let i=from;i<=to;i++) idx.push(i);
+  const labels=idx.map(i=>DATA.data[i].label);
+  const price=idx.map(i=>{ const v=priceAt(a,cat,i); return v>0?v:null; });
+  const cls=idx.map(i=>classify(a,cat,i));
+  const fixo=FIXED.has(a);
+  const lo=idx.map(i=>{ const g=gridOf(a,cat,DATA.periods[i]); return !fixo&&g&&g.b!=null&&g.a!=null?g.b:null; });
+  const hi=idx.map(i=>{ const g=gridOf(a,cat,DATA.periods[i]); return !fixo&&g&&g.b!=null&&g.a!=null?g.a:null; });
+  const temGrade=lo.some(v=>v!=null);
+  const cor={real:'#EB4A75',sazonal:'#62BAB6',flat:'#233744',sem:'#233744'};
+  document.getElementById('seasonChartTitle').textContent=`${a} · preço ${cat} dentro da faixa de temporada`;
+  if(seasonChartObj) seasonChartObj.destroy();
+  const ds=[];
+  if(temGrade){
+    ds.push({label:'Baixa temporada',data:lo,borderColor:'#62BAB6',borderDash:[5,4],borderWidth:1.5,pointRadius:0,stepped:false,tension:0,spanGaps:false});
+    ds.push({label:'Alta temporada',data:hi,borderColor:'#EB4A75',borderDash:[5,4],borderWidth:1.5,pointRadius:0,tension:0,spanGaps:false,fill:'-1',backgroundColor:'rgba(98,186,182,.14)'});
+  }
+  ds.push({label:`Preço ${cat}`,data:price,borderColor:'#233744',backgroundColor:'#233744',borderWidth:3,tension:0,spanGaps:false,
+    pointRadius:cls.map(c=>c.nat==='real'||c.nat==='sazonal'?7:4),pointHoverRadius:8,
+    pointBackgroundColor:cls.map(c=>cor[c.nat]),pointBorderColor:'#fff',pointBorderWidth:2});
+  seasonChartObj=new Chart(document.getElementById('seasonChart'),{
+    type:'line',data:{labels,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,usePointStyle:true,padding:16,font:{size:11}}},
+        tooltip:{backgroundColor:'#233744',padding:10,cornerRadius:8,callbacks:{
+          label:c=>`${c.dataset.label}: ${c.parsed.y==null?'—':money(c.parsed.y)}`,
+          afterBody:items=>{
+            const k=items[0].dataIndex, c=cls[k]; if(!c||!(c.price>0)) return [];
+            const l=[`Natureza: ${NAT_LABEL[c.nat]}`]; if(c.pos) l.push(`Posição: ${c.pos==='Fora'?'fora da faixa':c.pos}`);
+            if(c.gridNote) l.push('Grade ajustada: '+c.gridNote);
+            l.push(yoyLine(yoyInfo(a,cat,idx[k]))); return l;
+          }}}},
+      scales:{x:{offset:true,grid:{display:false},border:{color:'#E3E8EA'},ticks:{font:{size:11}}},
+        y:{beginAtZero:false,border:{display:false},grid:{color:'#EEF2F3'},ticks:{font:{size:10},callback:v=>'R$ '+v},
+           grace:'8%'}}}
+  });
+  document.getElementById('seasonChartFoot').innerHTML=
+    (fixo?`<strong>${a}</strong> não informa preço diferenciado por temporada nas planilhas; qualquer variação é tratada como ajuste real.`:
+     temGrade?`Faixa baixa–alta informada nas planilhas para <strong>${a}</strong>.`:`As planilhas não trazem faixa de temporada completa para <strong>${a}</strong> nesta categoria.`)+aviso;
 }
 
 [els.category,els.metric,els.start,els.end].forEach(x=>x.addEventListener('change',update));
 document.getElementById('allBtn').onclick=()=>{els.checks.querySelectorAll('input').forEach(x=>x.checked=true);update()};
 document.getElementById('clearBtn').onclick=()=>{els.checks.querySelectorAll('input').forEach(x=>x.checked=false);update()};
 update();
+}
+
+// ===== Leitura da planilha dados_tarifario.xlsx =====
+const XLSX_FILE='dados_tarifario.xlsx';
+const MESES_PT=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const nrm=s=>String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim().toLowerCase();
+function parsePeriod(v){
+  if(v==null||v==='') return null;
+  const pad=n=>String(n).padStart(2,'0');
+  if(typeof v==='number'){ const d=XLSX.SSF.parse_date_code(v); return d&&d.y>1990?`${d.y}-${pad(d.m)}`:null; }
+  if(v instanceof Date) return `${v.getFullYear()}-${pad(v.getMonth()+1)}`;
+  const s=nrm(v); let m;
+  if((m=s.match(/^(\d{4})[-\/](\d{1,2})/))) return `${m[1]}-${pad(+m[2])}`;
+  if((m=s.match(/^(?:\d{1,2}[\/.-])?(\d{1,2})[\/.-](\d{4})$/))) return `${m[2]}-${pad(+m[1])}`;
+  if((m=s.match(/^([a-z]{3})[a-z]*[\s\/.-]*(\d{2}|\d{4})$/))){
+    const i=MESES_PT.findIndex(x=>nrm(x)===m[1]); if(i>=0) return `${m[2].length===2?'20'+m[2]:m[2]}-${pad(i+1)}`;
+  }
+  return null;
+}
+function parseNum(v){
+  if(v==null||v==='') return null;
+  if(typeof v==='number') return v;
+  const t=String(v).replace(/R\$|\s/g,'');
+  const n=t.includes(',')?parseFloat(t.replace(/\./g,'').replace(',','.')):parseFloat(t);
+  return isNaN(n)?undefined:n;
+}
+function parseWorkbook(wb){
+  const find=nome=>{ const k=wb.SheetNames.find(n=>nrm(n)===nrm(nome)); return k?wb.Sheets[k]:null; };
+  const wsD=find('Dados'), wsA=find('Atrações');
+  if(!wsD||!wsA) throw new Error('não encontrei as abas "Dados" e "Atrações"');
+  const rd=ws=>XLSX.utils.sheet_to_json(ws,{header:1,raw:true,defval:null});
+  const warnings=[];
+  // cadastro de atrações
+  const canon=new Map(), exibir=[], fixed=[];
+  rd(wsA).slice(1).forEach(r=>{
+    const nome=r[0]==null?'':String(r[0]).trim(); if(!nome) return;
+    canon.set(nrm(nome),nome);
+    if(nrm(r[1])!=='nao') exibir.push(nome);
+    if(nrm(r[2])==='nao') fixed.push(nome);
+  });
+  if(!exibir.length) throw new Error('nenhuma atração marcada como "Sim" na aba "Atrações"');
+  // linhas de dados
+  const cells={}, unknown=new Set(); let nRows=0;
+  rd(wsD).slice(1).forEach((r,k)=>{
+    if(r.every(x=>x==null||x==='')) return;
+    const lin=k+2, nome=r[1]==null?'':String(r[1]).trim(), per=parsePeriod(r[0]);
+    if(!per){ warnings.push(`Aba Dados, linha ${lin}: mês inválido (${r[0]==null?'vazio':r[0]}).`); return; }
+    const att=canon.get(nrm(nome));
+    if(!att){ if(nome) unknown.add(nome); else warnings.push(`Aba Dados, linha ${lin}: atração em branco.`); return; }
+    if(!exibir.includes(att)) return;
+    const v=[2,3,4,5,6,7].map(i=>{ const n=parseNum(r[i]); if(n===undefined) warnings.push(`Aba Dados, linha ${lin}: valor não numérico na coluna ${'ABCDEFGH'[i]} (${r[i]}).`); return n==null||n<0?null:n; });
+    (cells[per]=cells[per]||{});
+    if(cells[per][att]) warnings.push(`Aba Dados, linha ${lin}: ${att} repetida em ${per}; vale a última linha.`);
+    cells[per][att]=v; nRows++;
+  });
+  unknown.forEach(n=>warnings.push(`Atração "${n}" está em Dados mas não na aba Atrações (linhas ignoradas).`));
+  const keys=Object.keys(cells).sort();
+  if(!keys.length) throw new Error('a aba "Dados" não tem linhas válidas');
+  // períodos contínuos (meses sem linha viram 0)
+  const periods=[]; let [y,m]=keys[0].split('-').map(Number); const [ye,me]=keys[keys.length-1].split('-').map(Number);
+  while(y<ye||(y===ye&&m<=me)){ periods.push(`${y}-${String(m).padStart(2,'0')}`); if(++m>12){m=1;y++;} }
+  const data=periods.map(per=>{
+    const [yy,mm]=per.split('-').map(Number), row={period:per,label:`${MESES_PT[mm-1]}/${String(yy).slice(2)}`,year:yy,month_num:mm};
+    exibir.forEach(a=>{ const v=cells[per]&&cells[per][a]; row[a]=v?{Adulto:v[0]||0,Meia:v[1]||0,has_record:(v[0]||0)>0||(v[1]||0)>0}:{Adulto:0,Meia:0,has_record:false}; });
+    return row;
+  });
+  const season={};
+  periods.forEach(per=>exibir.forEach(a=>{
+    const v=cells[per]&&cells[per][a]; if(!v) return;
+    const s={};
+    if(v[2]!=null||v[3]!=null) s.Adulto={baixa:v[2],alta:v[3]};
+    if(v[4]!=null||v[5]!=null) s.Meia={baixa:v[4],alta:v[5]};
+    if(Object.keys(s).length){ (season[per]=season[per]||{})[a]=s; }
+  }));
+  return {warnings,nRows,DATA:{meta:{source:XLSX_FILE,start_period:periods[0],end_period:periods[periods.length-1]},
+    attractions:exibir,periods,data,season,season_fixed:fixed.filter(a=>exibir.includes(a))}};
+}
+async function carregar(){
+  const aviso=document.getElementById('dataNotice'), fonte=()=>document.getElementById('footSource');
+  let DATA=EMBEDDED, info='';
+  try{
+    if(typeof XLSX==='undefined') throw new Error('biblioteca de leitura de Excel não carregou');
+    const res=await fetch(XLSX_FILE+'?v='+Date.now(),{cache:'no-store'});
+    if(!res.ok) throw new Error('arquivo '+XLSX_FILE+' não encontrado (HTTP '+res.status+')');
+    const wb=XLSX.read(await res.arrayBuffer(),{type:'array'});
+    const r=parseWorkbook(wb); DATA=r.DATA;
+    info=`Fonte: ${XLSX_FILE} · ${r.nRows} linhas lidas`;
+    if(r.warnings.length){
+      aviso.className='notice warn'; aviso.hidden=false;
+      aviso.innerHTML=`<strong>A planilha foi lida, mas há ${r.warnings.length} ponto(s) para revisar:</strong><ul>${r.warnings.slice(0,8).map(w=>`<li>${w}</li>`).join('')}</ul>${r.warnings.length>8?`<div>… e mais ${r.warnings.length-8}.</div>`:''}`;
+    }
+  }catch(err){
+    info='Fonte: dados embutidos no dashboard (planilha não lida)';
+    aviso.className='notice warn'; aviso.hidden=false;
+    aviso.innerHTML=`<strong>Não consegui ler ${XLSX_FILE}:</strong> ${err.message}. Estou mostrando os dados embutidos (até ${EMBEDDED.data[EMBEDDED.data.length-1].label}). A planilha só é lida quando o dashboard está publicado (ex.: GitHub Pages) e o arquivo está na mesma pasta do index.html.`;
+  }
+  boot(DATA);
+  fonte().textContent=info;
+}
+carregar();
+
 </script>
 </body>
 </html>
