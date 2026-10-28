@@ -2,7 +2,7 @@
   "meta": {
     "source": "Historico_Tarifario_Caracol_Concorrencia(2).xlsx",
     "start_period": "2023-12",
-    "end_period": "2026-08",
+    "end_period": "2026-10",
     "missing_policy": "Meses/valores sem informação são exibidos como 0.",
     "percent_policy": "Variação percentual não é calculada quando o mês anterior é 0."
   },
@@ -57,7 +57,9 @@
     "2026-05",
     "2026-06",
     "2026-07",
-    "2026-08"
+    "2026-08",
+    "2026-09",
+    "2026-10"
   ],
   "data": [
     {
@@ -2890,6 +2892,178 @@
       "Snowland": {
         "Adulto": 199.9,
         "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-09",
+      "label": "Set/26",
+      "year": 2026,
+      "month_num": 9,
+      "Acquamotion": {
+        "Adulto": 149.9,
+        "Meia": 104.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 130.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 64.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129.0,
+        "Meia": 89.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 129.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 134.9,
+        "Meia": 67.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 199.9,
+        "Meia": 129.5,
+        "has_record": true
+      },
+      "SpaceAdventure (NASA)": {
+        "Adulto": 119.9,
+        "Meia": 79.9,
+        "has_record": true
+      }
+    },
+    {
+      "period": "2026-10",
+      "label": "Out/26",
+      "year": 2026,
+      "month_num": 10,
+      "Acquamotion": {
+        "Adulto": 164.5,
+        "Meia": 119.5,
+        "has_record": true
+      },
+      "Alpen Park": {
+        "Adulto": 148.9,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Bondinhos Aéreos": {
+        "Adulto": 130.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Exceed Park": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Florybal": {
+        "Adulto": 190.0,
+        "Meia": 95.0,
+        "has_record": true
+      },
+      "Le Jardin": {
+        "Adulto": 35.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Mini Mundo": {
+        "Adulto": 98.0,
+        "Meia": 78.0,
+        "has_record": true
+      },
+      "Mundo a Vapor": {
+        "Adulto": 129.0,
+        "Meia": 89.0,
+        "has_record": true
+      },
+      "NBA Park": {
+        "Adulto": 159.0,
+        "Meia": 124.5,
+        "has_record": true
+      },
+      "Olivas de Gramado": {
+        "Adulto": 109.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Parque do Caracol": {
+        "Adulto": 134.9,
+        "Meia": 67.0,
+        "has_record": true
+      },
+      "Pé da Cascata": {
+        "Adulto": 198.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Roda Canela": {
+        "Adulto": 0,
+        "Meia": 0,
+        "has_record": false
+      },
+      "Skyglass": {
+        "Adulto": 165.0,
+        "Meia": 0,
+        "has_record": true
+      },
+      "Snowland": {
+        "Adulto": 219.0,
+        "Meia": 144.5,
         "has_record": true
       },
       "SpaceAdventure (NASA)": {
